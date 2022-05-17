@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DLinkedList.h" />
+    <ClInclude Include="NewDLinkedList.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Text1.in" />

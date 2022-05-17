@@ -1,4 +1,4 @@
-#include "DLinkedList.h"
+#include "NewDLinkedList.h"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -6,43 +6,6 @@
 
 using namespace std;
 
-string cleanUp(string str);
-
-int main() {
-
-	DLinkedList<string> lst1;
-	DLinkedList<string> lst2;
-
-	ifstream fin("Text1.in");
-	string str;
-
-	while (fin >> str) {
-		str = cleanUp(str);
-		lst1.insertOrderUnique(str);
-	}
-	fin.close();
-
-	fin.open("Text2.in");
-	while (fin >> str) {
-		str = cleanUp(str);
-		lst2.insertOrderUnique(str);
-	}
-	fin.close();
-
-	cout << "List 1: " << lst1 << endl;
-	cout << "List 2: " << lst2 << endl;
-
-	return 0;
-}
-
-bool isNotLow(string str)
-{
-	int i= 0;
-	if (str[i] < 123 || str[i] > 96) { return true; }
-	else { return false; }
-}
-
-//O(n)
 string cleanUp(string str)
 {
 	int i= 0;
@@ -56,4 +19,32 @@ string cleanUp(string str)
 	}
 	i= 0;
 	return str;
+}
+
+int main()
+{
+
+	DLinkedList lst1;
+	DLinkedList lst2;
+
+	ifstream fin("Text1.in");
+	string str;
+
+	while (fin >> str) {
+		str = cleanUp(str);
+		lst1.insertUniqueOrder(str);
+	}
+	fin.close();
+
+	fin.open("Text2.in");
+	while (fin >> str) {
+		str = cleanUp(str);
+		lst2.insertUniqueOrder(str);
+	}
+	fin.close();
+	cout << lst1 << "\n";
+	cout << lst2 << "\n";
+
+	DLinkedList Merged= lst1.merge(lst2);
+	cout << Merged;
 }
